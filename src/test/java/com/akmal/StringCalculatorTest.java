@@ -44,4 +44,23 @@ public class StringCalculatorTest {
 		}
 		Assertions.assertEquals(expectedSum, stringCal.add(inputStringBuff.toString()));
 	}
+
+	@Test
+	public void testWithDelimeterAtNewLine() {
+		StringCalculator stringCal = new StringCalculator();
+		StringBuilder inputStringBuff = new StringBuilder();
+
+		inputStringBuff.append("//;\n");
+		inputStringBuff.append("2147483647000").append("\n");
+		BigInteger expectedSum = BigInteger.valueOf(2147483647000L);
+		for (int i = 0; i < 1000; i++) {
+			inputStringBuff.append(100000 * i).append(";");
+			expectedSum = expectedSum.add(BigInteger.valueOf(100000L * i));
+		}
+		if (inputStringBuff.charAt(inputStringBuff.length() - 1) == ';') {
+			inputStringBuff.deleteCharAt(inputStringBuff.length() - 1);
+		}
+		Assertions.assertEquals(expectedSum, stringCal.add(inputStringBuff.toString()));
+	}
+
 }

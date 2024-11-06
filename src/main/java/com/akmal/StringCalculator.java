@@ -27,5 +27,4 @@ public class StringCalculator {
 		}
 		return numberSum;
 	}
-
 }
