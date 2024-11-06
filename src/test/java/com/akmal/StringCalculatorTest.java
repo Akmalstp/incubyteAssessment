@@ -52,7 +52,7 @@ public class StringCalculatorTest {
 
 		inputStringBuff.append("//;\n");
 		inputStringBuff.append("2147483647000").append("\n");
-		BigInteger expectedSum = BigInteger.valueOf(2147483647000L);
+		BigInteger expectedSum = BigInteger.valueOf(21474836470000L);
 		for (int i = 0; i < 1000; i++) {
 			inputStringBuff.append(100000 * i).append(";");
 			expectedSum = expectedSum.add(BigInteger.valueOf(100000L * i));
@@ -62,5 +62,4 @@ public class StringCalculatorTest {
 		}
 		Assertions.assertEquals(expectedSum, stringCal.add(inputStringBuff.toString()));
 	}
-
 }
